@@ -56,6 +56,17 @@
                         </div>
                     </article>
                 </div>
+
+                <div class="col-12">
+                    <article class="statistic-box bg-info">
+                        <div>
+                            <div class="number text-light">{{$cita}}</div>
+                            <div class="caption">
+                                <div>CITAS PENDIENTES</div>
+                            </div>
+                        </div>
+                    </article>
+                </div>
                 <!--.col-->
             </div>
             <!--.row-->

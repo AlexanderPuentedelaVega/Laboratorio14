@@ -1,3 +1,4 @@
+@if (Auth::user()->tipo_usuario==1)
 @extends('layouts/app')
 @section('titulo', 'Registrar especialidad')
 @section('content')
@@ -57,3 +58,4 @@
         </form>
     </div>
 @endsection
+@endif

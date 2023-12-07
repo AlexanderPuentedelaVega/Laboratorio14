@@ -36,5 +36,8 @@ class AppServiceProvider extends ServiceProvider
 
         $usuario=DB::select(" select count(*) as 'total' from usuario where estado=1 ");
         View::share('usuario', $usuario[0]->total);
+
+        $cita=DB::select(" select count(*) as 'total' from cita where estado=0 ");
+        View::share('cita', $cita[0]->total);
     }
 }

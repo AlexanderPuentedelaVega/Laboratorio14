@@ -1,3 +1,4 @@
+@if (Auth::user()->tipo_usuario==1)
 @extends('layouts/app')
 @section('titulo', 'lista de pacientes')
 @section('content')
@@ -35,10 +36,10 @@
     @endif
 
     <h4 class="text-center text-secondary">LISTA DE PACIENTES</h4>
-    <div class="pb-1 pt-2">
+    {{-- <div class="pb-1 pt-2">
         <a href="{{ route('paciente.create') }}" class="btn btn-rounded btn-primary"><i class="fas fa-plus"></i>&nbsp;
             Registrar</a>
-    </div>
+    </div> --}}
 
 
     <section class="card">
@@ -87,3 +88,4 @@
     </section>
 
 @endsection
+@endif

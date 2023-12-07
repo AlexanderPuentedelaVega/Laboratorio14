@@ -1,3 +1,4 @@
+@if (Auth::user()->tipo_usuario==1)
 @extends('layouts/app')
 @section('titulo', 'lista de especialidades')
 @section('content')
@@ -78,3 +79,4 @@
     </section>
 
 @endsection
+@endif

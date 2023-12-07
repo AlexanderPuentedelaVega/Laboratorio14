@@ -141,9 +141,9 @@
                                 <div class="dropdown-menu dropdown-menu-right pt-0" aria-labelledby="dd-user-menu">
 
                                     <h5 class="p-2 text-center bg-primary">{{Auth::user()->nombre}}</h5>
-                                    <a class="dropdown-item" href=""><span
+                                    <a class="dropdown-item" href="{{route('usuario.perfil')}}"><span
                                             class="font-icon glyphicon glyphicon-user"></span>Perfil</a>
-                                    <a class="dropdown-item" href=""><span
+                                    <a class="dropdown-item" href="{{route('usuario.cambiar')}}"><span
                                             class="font-icon glyphicon glyphicon-lock"></span>Cambiar contraseña</a>
 
                                     <div class="dropdown-divider"></div>
@@ -218,29 +218,15 @@
                     </ul>
                 </li>
 
-                <li
-                    class="grey with-sub {{ Request::is('paciente*') ? 'opened' : ''}}">
-                    <span>
+                @if (Auth::user()->tipo_usuario==1)
+                <li class="red">
+                    <a href="{{route('paciente.index')}}" class="{{ Request::is('paciente*') ? 'activo' : ''}}">
                         <img src="{{asset('img-inicio/pa.png')}}" class="img-inicio" alt="">
-                        {{-- <i class="fas fa-user-plus"></i> --}}
                         <span class="lbl">PACIENTES</span>
-                    </span>
-                    <ul>
-                        <li>
-                            <a href="{{route('paciente.create')}}" class="{{ Request::is('paciente-create*') ? 'activo' : ''}}">
-                                <i class="fas fa-plus-square icono-submenu"></i>
-                                <span class="lbl">Registrar paciente</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="{{route('paciente.index')}}" class="{{ Request::is('paciente-index*') ? 'activo' : ''}}">
-                                <i class="fas fa-th-list icono-submenu"></i>
-                                <span class="lbl">Lista de pacientes</span>
-                            </a>
-                        </li>
-
-                    </ul>
+                    </a>
                 </li>
+
+
 
                 <li class="grey with-sub {{ Request::is('medico*') ? 'opened' : ''}}">
                     <span>
@@ -250,13 +236,15 @@
                     </span>
                     <ul>
                         <li>
-                            <a href="{{route('medico.create')}}" class="{{ Request::is('medico-create*') ? 'activo' : ''}}">
+                            <a href="{{route('medico.create')}}"
+                                class="{{ Request::is('medico-create*') ? 'activo' : ''}}">
                                 <i class="fas fa-plus-square icono-submenu"></i>
                                 <span class="lbl">Registrar medico</span>
                             </a>
                         </li>
                         <li>
-                            <a href="{{route('medico.index')}}" class="{{ Request::is('medico-index*') ? 'activo' : ''}}">
+                            <a href="{{route('medico.index')}}"
+                                class="{{ Request::is('medico-index*') ? 'activo' : ''}}">
                                 <i class="fas fa-th-list icono-submenu"></i>
                                 <span class="lbl">Lista de medicos</span>
                             </a>
@@ -272,13 +260,15 @@
                     </span>
                     <ul>
                         <li>
-                            <a href="{{route('especialidad.create')}}" class="{{ Request::is('especialidad-create*') ? 'activo' : ''}}">
+                            <a href="{{route('especialidad.create')}}"
+                                class="{{ Request::is('especialidad-create*') ? 'activo' : ''}}">
                                 <i class="fas fa-plus-square icono-submenu"></i>
                                 <span class="lbl">Registrar especialidad</span>
                             </a>
                         </li>
                         <li>
-                            <a href="{{route('especialidad.index')}}" class="{{ Request::is('especialidad-index*') ? 'activo' : ''}}">
+                            <a href="{{route('especialidad.index')}}"
+                                class="{{ Request::is('especialidad-index*') ? 'activo' : ''}}">
                                 <i class="fas fa-th-list icono-submenu"></i>
                                 <span class="lbl">Lista de especialidades</span>
                             </a>
@@ -294,13 +284,15 @@
                     </span>
                     <ul>
                         <li>
-                            <a href="{{route('usuario.create')}}" class="{{ Request::is('usuario-create*') ? 'activo' : ''}}">
+                            <a href="{{route('usuario.create')}}"
+                                class="{{ Request::is('usuario-create*') ? 'activo' : ''}}">
                                 <i class="fas fa-plus-square icono-submenu"></i>
                                 <span class="lbl">Registrar usuario</span>
                             </a>
                         </li>
                         <li>
-                            <a href="{{route('usuario.index')}}" class="{{ Request::is('usuario-index*') ? 'activo' : ''}}">
+                            <a href="{{route('usuario.index')}}"
+                                class="{{ Request::is('usuario-index*') ? 'activo' : ''}}">
                                 <i class="fas fa-th-list icono-submenu"></i>
                                 <span class="lbl">Lista de usuarios</span>
                             </a>
@@ -308,6 +300,8 @@
                     </ul>
                 </li>
 
+
+                @endif
 
                 <li class="red">
                     <a href="{{route('empresa.index')}}" class="{{ Request::is('empresa*') ? 'activo' : ''}}">

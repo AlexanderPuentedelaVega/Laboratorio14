@@ -5,6 +5,7 @@ use App\Http\Controllers\EmpresaController;
 use App\Http\Controllers\EspecialidadController;
 use App\Http\Controllers\MedicoController;
 use App\Http\Controllers\PacienteController;
+use App\Http\Controllers\RecuperarClaveController;
 use App\Http\Controllers\UsuarioController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -75,6 +76,23 @@ Route::get('paciente-destroy-{id}',[PacienteController::class,'destroy'])->name(
 Route::get('cita-index',[CitaController::class,'index'])->name('cita.index')->middleware('verified');
 Route::get('cita-create',[CitaController::class,'create'])->name('cita.create')->middleware('verified');
 Route::post('cita-store',[CitaController::class,'store'])->name('cita.store')->middleware('verified');
-Route::get('cita-edit-{id}',[CitaController::class,'edit'])->name('cita.edit')->middleware('verified');
+Route::get('cita-edit-{id}-{id2}-{id3}-{id4}',[CitaController::class,'edit'])->name('cita.edit')->middleware('verified');
 Route::post('cita-update',[CitaController::class,'update'])->name('cita.update')->middleware('verified');
 Route::get('cita-destroy-{id}',[CitaController::class,'destroy'])->name('cita.destroy')->middleware('verified');
+
+Route::get('cita-procesarCita-{id}',[CitaController::class,'procesarCita'])->name('cita.procesarCita')->middleware('verified');
+
+
+/* cambiar clave usuario */
+Route::get('cambiar-usuario',[UsuarioController::class,'cambiar'])->name('usuario.cambiar')->middleware('verified');
+Route::post('cambiarClave-usuario',[UsuarioController::class,'cambiarClave'])->name('usuario.cambiarClave')->middleware('verified');
+
+/* perfil de usuario */
+Route::get('perfil-usuario',[UsuarioController::class,'perfil'])->name('usuario.perfil')->middleware('verified');
+Route::post('cambiarPerfil-usuario',[UsuarioController::class,'cambiarPerfil'])->name('usuario.cambiarPerfil')->middleware('verified');
+
+/* recuperar password */
+Route::get("/recuperar-contraseña", [RecuperarClaveController::class, 'index'])->name("recuperar.index");
+Route::post("/recuperar-contraseña-update", [RecuperarClaveController::class, 'update'])->name("recuperar.update");
+Route::get("/nueva-contraseña-index-{id}", [RecuperarClaveController::class, 'nuevoClave'])->name("nuevo.clave");
+Route::post("/nueva-contraseña-reset", [RecuperarClaveController::class, 'reset'])->name("reset.clave");

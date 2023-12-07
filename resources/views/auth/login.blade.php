@@ -87,7 +87,7 @@
 
 
                 <div class="text-center">
-                    <a class="font-italic isai5" href="">Olvidé mi contraseña</a>
+                    <a class="font-italic isai5" href="{{route('recuperar.index')}}">Olvidé mi contraseña</a>
                 </div>
                 <input name="btningresar" class="btn" title="click para ingresar" type="submit"
                     value="INICIAR SESION">
